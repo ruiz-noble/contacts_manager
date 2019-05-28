@@ -36,7 +36,7 @@ public class contacts {
         try {
             List<String> contacts = Files.readAllLines(file);
             for(String line : contacts){
-                String name = line.split(" | ")[0];
+                String name = line.split("\\|")[0];
                 if(name.trim().equalsIgnoreCase(searchedName)){
                     System.out.println(line);
                 }
