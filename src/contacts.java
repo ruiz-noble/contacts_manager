@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class contacts {
 
     public static void main(String[] args) {
-        System.out.println("\nWelcome to your contacts \nHere are your options \n");
+        System.out.println("\nWelcome to your contacts app \nHere are your options \n");
         runApp();
 
     }
