@@ -62,11 +62,34 @@ public class contacts {
             e.printStackTrace();
         }
     }
+    public static void delete(){
+        Scanner sc = new Scanner(System.in);
+        String directory = "data";
+        Path folder = Paths.get(directory);
+        Path file = Paths.get(directory, "contacts.txt");
+        System.out.println("What contact would you like to delete?");
+        String contactToDelete = sc.nextLine();
+        List<String> updatedList = new ArrayList<>();
+        try {
+            List<String> contacts = Files.readAllLines(file);
+            for(String line : contacts){
+                String name = line.split("\\|")[0];
+                if(name.trim().equalsIgnoreCase(contactToDelete)){
+                    continue;
+                }
+                updatedList.add(line);
+            }
+            Files.write(file, updatedList);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     public static void main(String[] args) {
 //        add();
         read();
-        search();
+//        search();
+        delete();
 
 
 
