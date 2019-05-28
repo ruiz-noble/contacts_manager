@@ -10,6 +10,7 @@ import java.util.Scanner;
 public class contacts {
 
     public static void main(String[] args) {
+        System.out.println("\nWelcome to your contacts \nHere are your options \n");
         runApp();
 
     }
@@ -43,7 +44,7 @@ public class contacts {
                 "3. Search a contact by name.\n" +
                 "4. Delete an existing contact.\n" +
                 "5. Exit.\n" +
-                "Enter an option (1, 2, 3, 4 or 5):");
+                "Enter an option (1, 2, 3, 4 or 5):\n");
 
         Scanner sc = new Scanner(System.in);
         int userOption = sc.nextInt();
