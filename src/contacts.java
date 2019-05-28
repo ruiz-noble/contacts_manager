@@ -13,13 +13,17 @@ public class contacts {
         if(number.length() == 7) {
             String first = number.substring(0, 3);
             String second = number.substring(3, 7);
-            return "(" + first + ")" + "-" + second;
+            return first + "-" + second;
         } else if (number.length() == 10){
             String first = number.substring(0, 3);
             String second = number.substring(3, 6);
             String third = number.substring(6, 10);
-            return "(" + first + ")" + "-" + second + "-" + third;
-        }  return "Error invalid entry";
+            return first + "-" + second + "-" + third;
+        }  else if (number.length() > 10){
+            return number;
+        }  else {
+            return "Invalid entry";
+        }
     }
 
     public static void runApp() {
@@ -92,7 +96,8 @@ public class contacts {
         String newName = sc.nextLine();
         System.out.println("Please enter their phone number number");
         String newNumber = sc.nextLine();
-        String newContact = newName + " | " + newNumber;
+        String formattedNumber = format(newNumber);
+        String newContact = newName + " | " + formattedNumber;
         String directory = "data";
         List<String> updatedList = new ArrayList<>();
         Path folder = Paths.get(directory);

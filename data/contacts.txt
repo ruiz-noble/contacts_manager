@@ -1,5 +1,6 @@
 Name | Phone number
 ---------------------
-John Doe | 2105551234
-Random Name | 2105554321
-Jane Doe  | 2105552222
+John Doe | 210-555-1234
+Random Name | 210-555-4321
+Jane Doe  | 210-555-2222
+Guy Jones | 876-543-8908
