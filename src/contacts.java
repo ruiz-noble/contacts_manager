@@ -10,6 +10,7 @@ import java.util.Scanner;
 public class contacts {
 
 
+
     public static void read(){
         String directory = "data";
 
@@ -19,6 +20,26 @@ public class contacts {
             List<String> contacts = Files.readAllLines(file);
             for(String line : contacts){
                 System.out.println(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public static void search(){
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("What name would you like displayed?");
+        String searchedName = sc.nextLine();
+        String directory = "data";
+
+        Path file = Paths.get(directory, "contacts.txt");
+        try {
+            List<String> contacts = Files.readAllLines(file);
+            for(String line : contacts){
+                String name = line.split(" | ")[0];
+                if(name.trim().equalsIgnoreCase(searchedName)){
+                    System.out.println(line);
+                }
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -43,8 +64,9 @@ public class contacts {
     }
 
     public static void main(String[] args) {
-        add();
+//        add();
         read();
+        search();
 
 
 
