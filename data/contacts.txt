@@ -2,5 +2,5 @@ Name | Phone number
 ---------------------
 John Doe | 210-555-1234
 Random Name | 210-555-4321
-Jane Doe  | 210-555-2222
+Jane Doe | 797-8094
 Guy Jones | 876-543-8908

@@ -9,6 +9,17 @@ import java.util.List;
 import java.util.Scanner;
 public class contacts {
 
+    public static void main(String[] args) {
+        runApp();
+
+    }
+
+
+
+
+
+
+
     public static String format(String number){
         if(number.length() == 7) {
             String first = number.substring(0, 3);
@@ -103,10 +114,32 @@ public class contacts {
         Path folder = Paths.get(directory);
         Path file = Paths.get(directory, "contacts.txt");
         try {
-            Files.write(file, Arrays.asList(newContact), StandardOpenOption.APPEND);
+            List<String> contacts = Files.readAllLines(file);
+            for(String line : contacts){
+                String name = line.split("\\|")[0];
+                if(name.trim().equalsIgnoreCase(newName)){
+                    System.out.printf("There's already a contact named %s. Do you want to overwrite it? (Yes/No)\n",newName);
+                    if (sc.nextLine().equals("yes")){
+                        updatedList.add(newContact);
+                        continue;
+                    } else{
+                        add();
+                    }
+
+                } else {
+                    Files.write(file, Arrays.asList(newContact), StandardOpenOption.APPEND);
+                }
+                updatedList.add(line);
+            }
+            Files.write(file, updatedList);
         } catch (IOException e) {
             e.printStackTrace();
         }
+//        try {
+//            Files.write(file, Arrays.asList(newContact), StandardOpenOption.APPEND);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
     }
     public static void delete(){
         Scanner sc = new Scanner(System.in);
@@ -131,11 +164,4 @@ public class contacts {
         }
     }
 
-    public static void main(String[] args) {
-    runApp();
-
-
-
-
-    }
 }
