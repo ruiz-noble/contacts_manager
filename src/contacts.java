@@ -9,7 +9,48 @@ import java.util.List;
 import java.util.Scanner;
 public class contacts {
 
+    public static String format(String number){
+        if(number.length() == 7) {
+            String first = number.substring(0, 3);
+            String second = number.substring(3, 7);
+            return "(" + first + ")" + "-" + second;
+        } else if (number.length() == 10){
+            String first = number.substring(0, 3);
+            String second = number.substring(3, 6);
+            String third = number.substring(6, 10);
+            return "(" + first + ")" + "-" + second + "-" + third;
+        }  return "Error invalid entry";
+    }
 
+    public static void runApp() {
+        System.out.println("1. View contacts.\n" +
+                "2. Add a new contact.\n" +
+                "3. Search a contact by name.\n" +
+                "4. Delete an existing contact.\n" +
+                "5. Exit.\n" +
+                "Enter an option (1, 2, 3, 4 or 5):");
+
+        Scanner sc = new Scanner(System.in);
+        int userOption = sc.nextInt();
+        if(userOption == 1){
+             read();
+             runApp();
+        } else if (userOption == 2){
+             add();
+             runApp();
+        } else if (userOption == 3){
+              search();
+              runApp();
+        } else if (userOption == 4){
+              delete();
+              runApp();
+        } else if (userOption == 5){
+            System.out.println("Thank you");
+        }  else{
+            System.out.println("Error: Invalid input.");
+            runApp();
+        }
+    }
 
     public static void read(){
         String directory = "data";
@@ -86,10 +127,7 @@ public class contacts {
     }
 
     public static void main(String[] args) {
-//        add();
-        read();
-//        search();
-        delete();
+    runApp();
 
 
 
