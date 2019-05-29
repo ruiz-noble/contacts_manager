@@ -9,19 +9,18 @@ import java.util.List;
 import java.util.Scanner;
 public class contacts {
 
+    private static String directory = "data";
+    private static String fileName = "contacts.txt";
+    private static Path file = Paths.get(directory, fileName);
+    private static Scanner sc = new Scanner(System.in);
+
     public static void main(String[] args) {
         System.out.println("\nWelcome to your contacts app \nHere are your options");
         runApp();
 
     }
 
-
-
-
-
-
-
-    public static String format(String number){
+    private static String format(String number){
         if(number.length() == 7) {
             String first = number.substring(0, 3);
             String second = number.substring(3, 7);
@@ -38,7 +37,7 @@ public class contacts {
         }
     }
 
-    public static void runApp() {
+    private static void runApp() {
         System.out.println("\n1. View contacts.\n" +
                 "2. Add a new contact.\n" +
                 "3. Search a contact by name or number.\n" +
@@ -46,8 +45,7 @@ public class contacts {
                 "5. Exit.\n" +
                 "Enter an option (1, 2, 3, 4 or 5):\n");
 
-        Scanner sc = new Scanner(System.in);
-        int userOption = sc.nextInt();
+        int userOption = Integer.valueOf(sc.nextLine());
         if(userOption == 1){
              read();
              runApp();
@@ -61,21 +59,18 @@ public class contacts {
               delete();
               runApp();
         } else if (userOption == 5){
-            System.out.println("Thank you");
+            System.out.println("Goodbye!");
         }  else{
             System.out.println("Error: Invalid input.");
             runApp();
         }
     }
 
-    public static void read(){
-        String directory = "data";
+    private static void read(){
         String leftAlignFormat = "%-14s | %-14s |%n";
         System.out.format("+--------------|----------------+%n");
         System.out.format("| Contact Name | Number         |%n");
         System.out.format("+--------------|----------------+%n");
-        Path folder = Paths.get(directory);
-        Path file = Paths.get(directory, "contacts.txt");
         try {
             List<String> contacts = Files.readAllLines(file);
             for(String line : contacts){
@@ -88,14 +83,10 @@ public class contacts {
             e.printStackTrace();
         }
     }
-    public static void search(){
-        Scanner sc = new Scanner(System.in);
 
+    private static void search(){
         System.out.println("What contact would you like displayed?");
         String searchedName = sc.nextLine();
-        String directory = "data";
-
-        Path file = Paths.get(directory, "contacts.txt");
         try {
             List<String> contacts = Files.readAllLines(file);
             for(String line : contacts){
@@ -105,25 +96,32 @@ public class contacts {
                     System.out.println(line);
                 } else if (number.trim().toLowerCase().contains(searchedName.toLowerCase())){
                     System.out.println(line);
+                } else{
+                    System.out.println("No contact matches your input");
+                    runApp();
                 }
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    public static void add(){
-        Scanner sc = new Scanner(System.in);
+
+    private static void add(){
         System.out.println("Please enter the name that you would like add.");
         String newName = sc.nextLine();
+        if(newName.length() > 13){
+            System.out.println("Name too large consider abbreviation");
+            add();
+        }
         System.out.println("Please enter their phone number number");
         String newNumber = sc.nextLine();
         String formattedNumber = format(newNumber);
-        System.out.println(formattedNumber);
+        if(formattedNumber.length() > 14){
+            System.out.println("Invalid phone number");
+            add();
+        }
         String newContact = newName + "|" + formattedNumber;
-        String directory = "data";
         List<String> updatedList = new ArrayList<>();
-        Path folder = Paths.get(directory);
-        Path file = Paths.get(directory, "contacts.txt");
         try {
             List<String> contacts = Files.readAllLines(file);
             for(String line : contacts){
@@ -147,9 +145,6 @@ public class contacts {
                         add();
                     }
                 }
-//                else {
-//                    Files.write(file, Arrays.asList(newContact), StandardOpenOption.APPEND);
-//                }
                 updatedList.add(line);
             }
             Files.write(file, updatedList);
@@ -157,20 +152,14 @@ public class contacts {
                 Files.write(file, updatedList);
             } else {
                 Files.write(file, Arrays.asList(newContact), StandardOpenOption.APPEND);
-
             }
-
-
         } catch (IOException e) {
             e.printStackTrace();
         }
 
     }
-    public static void delete(){
-        Scanner sc = new Scanner(System.in);
-        String directory = "data";
-        Path folder = Paths.get(directory);
-        Path file = Paths.get(directory, "contacts.txt");
+
+    private static void delete(){
         System.out.println("What contact would you like to delete?");
         String contactToDelete = sc.nextLine();
         List<String> updatedList = new ArrayList<>();
