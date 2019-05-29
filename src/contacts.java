@@ -70,14 +70,20 @@ public class contacts {
 
     public static void read(){
         String directory = "data";
-
+        String leftAlignFormat = "%-14s | %-14s |%n";
+        System.out.format("+--------------|----------------+%n");
+        System.out.format("| Contact Name | Number         |%n");
+        System.out.format("+--------------|----------------+%n");
         Path folder = Paths.get(directory);
         Path file = Paths.get(directory, "contacts.txt");
         try {
             List<String> contacts = Files.readAllLines(file);
             for(String line : contacts){
-                System.out.println(line);
+                String name = line.split("\\|")[0];
+                String number = line.split("\\|")[1];
+                System.out.format(leftAlignFormat,"| " + name, number);
             }
+            System.out.format("+--------------|----------------+%n");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -113,7 +119,7 @@ public class contacts {
         String newNumber = sc.nextLine();
         String formattedNumber = format(newNumber);
         System.out.println(formattedNumber);
-        String newContact = newName + " | " + formattedNumber;
+        String newContact = newName + "|" + formattedNumber;
         String directory = "data";
         List<String> updatedList = new ArrayList<>();
         Path folder = Paths.get(directory);
@@ -153,24 +159,12 @@ public class contacts {
                 Files.write(file, Arrays.asList(newContact), StandardOpenOption.APPEND);
 
             }
-//            for (String contact: updatedList) {
-//                String name = contact.split("\\|")[0];
-//                if (name.equals(newContact)){
-//                    break;
-//                } else {
-//                    updatedList.add(newContact);
-//                }
-//
-//            }
+
 
         } catch (IOException e) {
             e.printStackTrace();
         }
-//        try {
-//            Files.write(file, Arrays.asList(newContact), StandardOpenOption.APPEND);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
+
     }
     public static void delete(){
         Scanner sc = new Scanner(System.in);
