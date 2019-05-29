@@ -41,7 +41,7 @@ public class contacts {
     public static void runApp() {
         System.out.println("\n1. View contacts.\n" +
                 "2. Add a new contact.\n" +
-                "3. Search a contact by name.\n" +
+                "3. Search a contact by name or number.\n" +
                 "4. Delete an existing contact.\n" +
                 "5. Exit.\n" +
                 "Enter an option (1, 2, 3, 4 or 5):\n");
@@ -85,7 +85,7 @@ public class contacts {
     public static void search(){
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("What name would you like displayed?");
+        System.out.println("What contact would you like displayed?");
         String searchedName = sc.nextLine();
         String directory = "data";
 
@@ -94,7 +94,10 @@ public class contacts {
             List<String> contacts = Files.readAllLines(file);
             for(String line : contacts){
                 String name = line.split("\\|")[0];
+                String number = line.split("\\|")[1];
                 if(name.trim().toLowerCase().contains(searchedName.toLowerCase())){
+                    System.out.println(line);
+                } else if (number.trim().toLowerCase().contains(searchedName.toLowerCase())){
                     System.out.println(line);
                 }
             }
@@ -109,6 +112,7 @@ public class contacts {
         System.out.println("Please enter their phone number number");
         String newNumber = sc.nextLine();
         String formattedNumber = format(newNumber);
+        System.out.println(formattedNumber);
         String newContact = newName + " | " + formattedNumber;
         String directory = "data";
         List<String> updatedList = new ArrayList<>();
@@ -118,6 +122,7 @@ public class contacts {
             List<String> contacts = Files.readAllLines(file);
             for(String line : contacts){
                 String name = line.split("\\|")[0];
+                String number = line.split("\\|")[1];
                 if(name.trim().equalsIgnoreCase(newName)){
                     System.out.printf("There's already a contact named %s. Do you want to overwrite it? (Yes/No)\n",newName);
                     if (sc.nextLine().equals("yes")){
@@ -126,7 +131,15 @@ public class contacts {
                     } else{
                         add();
                     }
-
+                } else if (number.trim().equalsIgnoreCase(formattedNumber.trim())){
+                    System.out.printf("There's already a contact with the number %s. Do you want to overwrite it? " +
+                            "(Yes/No)\n",formattedNumber);
+                    if (sc.nextLine().equals("yes")){
+                        updatedList.add(newContact);
+                        continue;
+                    } else{
+                        add();
+                    }
                 }
 //                else {
 //                    Files.write(file, Arrays.asList(newContact), StandardOpenOption.APPEND);
