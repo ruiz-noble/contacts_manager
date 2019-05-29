@@ -43,12 +43,13 @@ public class contacts {
     }
 
     private static void runApp() {
-        System.out.println("\n1. View contacts.\n" +
-                "2. Add a new contact.\n" +
-                "3. Search a contact by name or number.\n" +
-                "4. Delete an existing contact.\n" +
-                "5. Exit.\n" +
-                "6. View Favorites.\n" +
+        System.out.println("\n1. View contacts\n" +
+                "2. Add a new contact\n" +
+                "3. Search a contact by name or number\n" +
+                "4. Delete an existing contact\n" +
+                "5. Add a contact to favorites\n" +
+                "6. View Favorites\n" +
+                "7. Exit\n" +
                 "Enter an option (1, 2, 3, 4 or 5):\n");
 
         int userOption = Integer.valueOf(sc.nextLine());
@@ -68,7 +69,8 @@ public class contacts {
             addFavorite();
             runApp();
         } else if (userOption == 6){
-            System.out.println("Add favorite search method here");
+            showFavorites();
+            runApp();
         }else if(userOption == 7){
             System.out.println("Goodbye!");
         }  else{
@@ -206,7 +208,7 @@ public class contacts {
                 String name = line.split("\\|")[0];
                 String number = line.split("\\|")[1];
                 if(name.trim().equalsIgnoreCase(contactFavorite)){
-                    updatedList.add(name + "*|" + number);
+                    updatedList.add(name + " *|" + number);
                     continue;
                 }
                 updatedList.add(line);
@@ -223,20 +225,14 @@ public class contacts {
         try {
             System.out.format(header);
             List<String> contacts = Files.readAllLines(file);
-            for(String line : contacts){
+            for(String line : contacts) {
                 String name = line.split("\\|")[0];
                 String number = line.split("\\|")[1];
-                if(name.trim().toLowerCase().contains("*")){
-                    System.out.format(leftAlignFormat,"| " + name, number);
-                } else if (number.trim().toLowerCase().contains(searchedName.toLowerCase())){
-                    System.out.format(leftAlignFormat,"| " + name, number);
+                if (name.trim().toLowerCase().contains("*")) {
+                    System.out.format(leftAlignFormat, "| " + name, number);
                 }
             }
-            if (!foundContact){
-                String name = "no match";
-                String number = "no match";
-                System.out.format(leftAlignFormat,"| " + name, number);
-            }
+            System.out.format("+--------------|----------------+%n");
         } catch (IOException e) {
             e.printStackTrace();
         }
