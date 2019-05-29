@@ -15,76 +15,132 @@ public class contacts {
     private static String fileName = "contacts.txt";
     private static Path file = Paths.get(directory, fileName);
     private static Scanner sc = new Scanner(System.in);
-    private static String leftAlignFormat = "%-14s | %-14s |%n";
+    private static String leftAlignFormat = "   | | %-14s | %-14s | | %n";
 
-    private static String topPhone = "      .-------------------.  \n" +
-                                  "    .'       .'  `.        `.\n" +
-                                  "   ;         :    :          ;\n" +
-                                  "   | .---------------------. |\n" +
-                                  "   | |                     | |\n" +
-                                  "   | |                     | |\n" +
-                                  "   | |                     | |";
-    private static String bottomPhone = "   | |                     | |\n" +
-                                     "   | |                     | |\n" +
-                                     "   | |                     | |\n" +
-            "   | |                     | |\n" +
-            "   | |                     | |\n" +
-            "   | |                     | |\n" +
-            "   | |                     | |\n" +
-            "   | |                     | |\n" +
-            "   | |                     | |\n" +
-                                     "   | |                     | |\n" +
-                                     "   | `---------------------' |\n" +
-                                     "   |                         |\n" +
-                                     "    '.______________________.'\n";
-    private static String header = "+--------------|----------------+%n" +
-                                   "| Contact Name | Number         |%n" +
-                                   "+--------------|----------------+%n";
+    private static String topPhone = "      .-------------------------------.  \n" +
+                                  "    .'              .'  `.             `.\n" +
+                                  "   ;                :    :               ;\n" +
+                                  "   | .---------------------------------. |\n" +
+                                  "   | |                                 | |\n" +
+                                  "   | |                                 | |\n" +
+                                  "   | |                                 | |\n" +
+                                  "   | |                                 | |\n" +
+                                  "   | | Contact Name   |   Number       | |\n";
+    private static String bottomPhone = "   | |                                 | |\n" +
+                                     "   | |                                 | |\n" +
+                                     "   | |                                 | |\n" +
+            "   | |                                 | |\n" +
+            "   | |                                 | |\n" +
+            "   | |                                 | |\n" +
+
+                                     "   | |                                 | |\n" +
+                                     "   | `---------------------------------' |\n" +
+                                     "   |                                     |\n" +
+                                     "    '.__________________________________.'\n";
 
 
-    private static String welcome = "      .-------------------.  \n" +
-            "    .'       .'  `.        `.\n" +
-            "   ;         :    :          ;\n" +
-            "   | .---------------------. |\n" +
-            "   | |                     | |\n" +
-            "   | |                     | |\n" +
-            "   | |      Welcome!       | |\n" +
-            "   | |                     | |\n" +
-            "   | |        to           | |\n" +
-            "   | |                     | |\n" +
-            "   | |    your contacts    | |\n" +
-            "   | |                     | |\n" +
-            "   | |        app          | |\n" +
-            "   | |                     | |\n" +
-            "   | |                     | |\n" +
-            "   | |                     | |\n" +
-            "   | |                     | |\n" +
-            "   | `---------------------' |\n" +
-            "   |                         |\n" +
-            "    '.______________________.'\n";
-    private static String options = "      .-------------------.  \n" +
-            "    .'       .'  `.        `.\n" +
-            "   ;         :    :          ;\n" +
-            "   | .---------------------. |\n" +
-            "   | |                     | |\n" +
-            "   | | 1. View Contacts    | |\n" +
-            "   | | 2. Add New Contact  | |\n" +
-            "   | | 3. Search Contact   | |\n" +
-            "   | | 4. Delete Contact   | |\n" +
-            "   | | 5. Add Favorite     | |\n" +
-            "   | | 6. View Favorites   | |\n" +
-            "   | | 7. Exit             | |\n" +
-            "   | |                     | |\n" +
-            "   | | Enter an option     | |\n" +
-            "   | |                     | |\n" +
-            "   | |                     | |\n" +
-            "   | |                     | |\n" +
-            "   | `---------------------' |\n" +
-            "   |                         |\n" +
-            "    '.______________________.'\n";
+
+    private static String welcome = "      .-------------------------------.  \n" +
+            "    .'              .'  `.             `.\n" +
+            "   ;                :    :               ;\n" +
+            "   | .---------------------------------. |\n" +
+            "   | |                                 | |\n" +
+            "   | |                                 | |\n" +
+            "   | |             Welcome!            | |\n" +
+            "   | |                                 | |\n" +
+            "   | |               to                | |\n" +
+            "   | |                                 | |\n" +
+            "   | |           your contacts         | |\n" +
+            "   | |                                 | |\n" +
+            "   | |               app               | |\n" +
+            "   | |                                 | |\n" +
+            "   | |                                 | |\n" +
+            "   | |                                 | |\n" +
+            "   | |                                 | |\n" +
+            "   | |                                 | |\n" +
+            "   | |                                 | |\n" +
+            "   | |                                 | |\n" +
+            "   | |                                 | |\n" +
+            "   | |                                 | |\n" +
+            "   | `---------------------------------' |\n" +
+            "   |                                     |\n" +
+            "    '.__________________________________.'\n";
+    private static String options = "      .-------------------------------.  \n" +
+            "    .'              .'  `.             `.\n" +
+            "   ;                :    :               ;\n" +
+            "   | .---------------------------------. |\n" +
+            "   | |                                 | |\n" +
+            "   | |    1. View Contacts             | |\n" +
+            "   | |    2. Add New Contact           | |\n" +
+            "   | |    3. Search Contact            | |\n" +
+            "   | |    4. Delete Contact            | |\n" +
+            "   | |    5. Add Favorite              | |\n" +
+            "   | |    6. View Favorites            | |\n" +
+            "   | |    7. Exit                      | |\n" +
+            "   | |                                 | |\n" +
+            "   | |    Enter an option              | |\n" +
+            "   | |                                 | |\n" +
+            "   | |                                 | |\n" +
+            "   | |                                 | |\n" +
+            "   | |                                 | |\n" +
+            "   | |                                 | |\n" +
+            "   | |                                 | |\n" +
+            "   | `---------------------------------' |\n" +
+            "   |                                     |\n" +
+            "    '.__________________________________.'\n";
+    private static String goodBye = "      .-------------------------------.  \n" +
+            "    .'              .'  `.             `.\n" +
+            "   ;                :    :               ;\n" +
+            "   | .---------------------------------. |\n" +
+            "   | |                                 | |\n" +
+            "   | |                                 | |\n" +
+            "   | |                                 | |\n" +
+            "   | |                                 | |\n" +
+            "   | |                                 | |\n" +
+            "   | |                                 | |\n" +
+            "   | |             Goodbye!            | |\n" +
+            "   | |                                 | |\n" +
+            "   | |                                 | |\n" +
+            "   | |                                 | |\n" +
+            "   | |                                 | |\n" +
+            "   | |                                 | |\n" +
+            "   | |                                 | |\n" +
+            "   | |                                 | |\n" +
+            "   | |                                 | |\n" +
+            "   | |                                 | |\n" +
+            "   | |                                 | |\n" +
+            "   | |                                 | |\n" +
+            "   | `---------------------------------' |\n" +
+            "   |                                     |\n" +
+            "    '.__________________________________.'\n";
+    private static  String deleted = "      .-------------------------------.  \n" +
+            "    .'              .'  `.             `.\n" +
+            "   ;                :    :               ;\n" +
+            "   | .---------------------------------. |\n" +
+            "   | |                                 | |\n" +
+            "   | |                                 | |\n" +
+            "   | |                                 | |\n" +
+            "   | |                                 | |\n" +
+            "   | |                                 | |\n" +
+            "   | |                                 | |\n" +
+            "   | |         Contact Deleted         | |\n" +
+            "   | |                                 | |\n" +
+            "   | |                                 | |\n" +
+            "   | |                                 | |\n" +
+            "   | |                                 | |\n" +
+            "   | |                                 | |\n" +
+            "   | |                                 | |\n" +
+            "   | |                                 | |\n" +
+            "   | |                                 | |\n" +
+            "   | |                                 | |\n" +
+            "   | |                                 | |\n" +
+            "   | |                                 | |\n" +
+            "   | `---------------------------------' |\n" +
+            "   |                                     |\n" +
+            "    '.__________________________________.'\n";
 
     public static void main(String[] args) throws Exception{
-        printWithDelays(welcome, TimeUnit.MILLISECONDS, 5);
+        printWithDelays(welcome, TimeUnit.MILLISECONDS, 2);
         
         runApp();
 
@@ -96,6 +152,7 @@ public class contacts {
             unit.sleep(delay);
         }
     }
+
     private static String format(String number){
         if(number.length() == 7) {
             String first = number.substring(0, 3);
@@ -114,7 +171,7 @@ public class contacts {
     }
 
     private static void runApp() throws InterruptedException {
-        printWithDelays(options, TimeUnit.MILLISECONDS, 5);
+        printWithDelays(options, TimeUnit.MILLISECONDS, 2);
         System.out.println("Input here: ");
         int userOption = Integer.valueOf(sc.nextLine());
         if(userOption == 1){
@@ -136,7 +193,7 @@ public class contacts {
             showFavorites();
             runApp();
         }else if(userOption == 7){
-            System.out.println("Goodbye!");
+            printWithDelays(goodBye, TimeUnit.MILLISECONDS, 2);
         }  else{
             System.out.println("Error: Invalid input.");
             runApp();
@@ -144,16 +201,16 @@ public class contacts {
     }
 
     private static void read(){
-        System.out.format(header);
         try {
             List<String> contacts = Files.readAllLines(file);
+            printWithDelays(topPhone, TimeUnit.MILLISECONDS, 2);
             for(String line : contacts){
                 String name = line.split("\\|")[0];
                 String number = line.split("\\|")[1];
-                System.out.format(leftAlignFormat,"| " + name, number);
+                System.out.format(leftAlignFormat, name, number);
             }
-            System.out.format("+--------------|----------------+%n");
-        } catch (IOException e) {
+            printWithDelays(bottomPhone, TimeUnit.MILLISECONDS, 2);
+        } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
     }
@@ -165,19 +222,21 @@ public class contacts {
         boolean foundContact = false;
 
         try {
-            System.out.format(header);
+            printWithDelays(topPhone, TimeUnit.MILLISECONDS, 2);
             List<String> contacts = Files.readAllLines(file);
             for(String line : contacts){
                 String name = line.split("\\|")[0];
                 String number = line.split("\\|")[1];
                 if(name.trim().toLowerCase().contains(searchedName.toLowerCase())){
-                    System.out.format(leftAlignFormat,"| " + name, number);
+                    System.out.format(leftAlignFormat, name, number);
                     foundContact = true;
                 } else if (number.trim().toLowerCase().contains(searchedName.toLowerCase())){
-                    System.out.format(leftAlignFormat,"| " + name, number);
+                    System.out.format(leftAlignFormat, name, number);
                     foundContact = true;
                 }
             }
+            printWithDelays(bottomPhone, TimeUnit.MILLISECONDS, 2);
+
             if (!foundContact){
                 String name = "no match";
                 String number = "no match";
@@ -185,7 +244,7 @@ public class contacts {
             }
 
 
-        } catch (IOException e) {
+        } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
     }
@@ -251,13 +310,15 @@ public class contacts {
             List<String> contacts = Files.readAllLines(file);
             for(String line : contacts){
                 String name = line.split("\\|")[0];
-                if(name.trim().equalsIgnoreCase(contactToDelete)){
+                if((name.trim().equalsIgnoreCase(contactToDelete)) || (name.trim().equalsIgnoreCase(contactToDelete +
+                        " *"))){
                     continue;
                 }
                 updatedList.add(line);
             }
+            printWithDelays(deleted, TimeUnit.MILLISECONDS, 2);
             Files.write(file, updatedList);
-        } catch (IOException e) {
+        } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
     }
@@ -287,17 +348,17 @@ public class contacts {
     private static void showFavorites(){
 
         try {
-            System.out.format(header);
+            printWithDelays(topPhone, TimeUnit.MILLISECONDS, 2);
             List<String> contacts = Files.readAllLines(file);
             for(String line : contacts) {
                 String name = line.split("\\|")[0];
                 String number = line.split("\\|")[1];
                 if (name.trim().toLowerCase().contains("*")) {
-                    System.out.format(leftAlignFormat, "| " + name, number);
+                    System.out.format(leftAlignFormat, name, number);
                 }
             }
-            System.out.format("+--------------|----------------+%n");
-        } catch (IOException e) {
+            printWithDelays(bottomPhone, TimeUnit.MILLISECONDS, 2);
+        } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
     }
