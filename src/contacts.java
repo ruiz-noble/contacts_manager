@@ -67,7 +67,8 @@ public class contacts {
         } else if (userOption == 5) {
             System.out.println("Goodbye!");
         }else if(userOption == 6){
-            System.out.println("Insert list favorites here");;
+            makeFavorite();
+            runApp();
         }  else{
             System.out.println("Error: Invalid input.");
             runApp();
@@ -188,6 +189,28 @@ public class contacts {
                 updatedList.add(line);
             }
             Files.write(file, updatedList);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    private static void makeFavorite(){
+        System.out.println("Who who would you like to add to your favorites?");
+        String contactFavorite = sc.nextLine();
+        List<String> updatedList = new ArrayList<>();
+
+        try {
+            List<String> contacts = Files.readAllLines(file);
+            for (String line: contacts) {
+                String name = line.split("\\|")[0];
+                String number = line.split("\\|")[1];
+                if(name.trim().equalsIgnoreCase(contactFavorite)){
+                    updatedList.add(name + "*|" + number);
+                    continue;
+                }
+                updatedList.add(line);
+            }
+            Files.write(file, updatedList);
+
         } catch (IOException e) {
             e.printStackTrace();
         }
