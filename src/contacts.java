@@ -14,6 +14,9 @@ public class contacts {
     private static Path file = Paths.get(directory, fileName);
     private static Scanner sc = new Scanner(System.in);
     private static String leftAlignFormat = "%-14s | %-14s |%n";
+    private static String header = "+--------------|----------------+%n" +
+                                   "| Contact Name | Number         |%n" +
+                                   "+--------------|----------------+%n";
 
 
     public static void main(String[] args) {
@@ -45,6 +48,7 @@ public class contacts {
                 "3. Search a contact by name or number.\n" +
                 "4. Delete an existing contact.\n" +
                 "5. Exit.\n" +
+                "6. View Favorites.\n" +
                 "Enter an option (1, 2, 3, 4 or 5):\n");
 
         int userOption = Integer.valueOf(sc.nextLine());
@@ -60,8 +64,10 @@ public class contacts {
         } else if (userOption == 4){
               delete();
               runApp();
-        } else if (userOption == 5){
+        } else if (userOption == 5) {
             System.out.println("Goodbye!");
+        }else if(userOption == 6){
+            System.out.println("Insert list favorites here");;
         }  else{
             System.out.println("Error: Invalid input.");
             runApp();
@@ -69,9 +75,7 @@ public class contacts {
     }
 
     private static void read(){
-        System.out.format("+--------------|----------------+%n");
-        System.out.format("| Contact Name | Number         |%n");
-        System.out.format("+--------------|----------------+%n");
+        System.out.format(header);
         try {
             List<String> contacts = Files.readAllLines(file);
             for(String line : contacts){
@@ -85,15 +89,14 @@ public class contacts {
         }
     }
 
+
     private static void search(){
         System.out.println("What contact would you like displayed?");
         String searchedName = sc.nextLine();
         boolean foundContact = false;
 
         try {
-            System.out.format("+--------------|----------------+%n");
-            System.out.format("| Contact Name | Number         |%n");
-            System.out.format("+--------------|----------------+%n");
+            System.out.format(header);
             List<String> contacts = Files.readAllLines(file);
             for(String line : contacts){
                 String name = line.split("\\|")[0];
