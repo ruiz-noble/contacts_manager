@@ -127,12 +127,29 @@ public class contacts {
                         add();
                     }
 
-                } else {
-                    Files.write(file, Arrays.asList(newContact), StandardOpenOption.APPEND);
                 }
+//                else {
+//                    Files.write(file, Arrays.asList(newContact), StandardOpenOption.APPEND);
+//                }
                 updatedList.add(line);
             }
             Files.write(file, updatedList);
+            if (updatedList.contains(newContact)){
+                Files.write(file, updatedList);
+            } else {
+                Files.write(file, Arrays.asList(newContact), StandardOpenOption.APPEND);
+
+            }
+//            for (String contact: updatedList) {
+//                String name = contact.split("\\|")[0];
+//                if (name.equals(newContact)){
+//                    break;
+//                } else {
+//                    updatedList.add(newContact);
+//                }
+//
+//            }
+
         } catch (IOException e) {
             e.printStackTrace();
         }
