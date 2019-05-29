@@ -91,6 +91,9 @@ public class contacts {
         boolean foundContact = false;
 
         try {
+            System.out.format("+--------------|----------------+%n");
+            System.out.format("| Contact Name | Number         |%n");
+            System.out.format("+--------------|----------------+%n");
             List<String> contacts = Files.readAllLines(file);
             for(String line : contacts){
                 String name = line.split("\\|")[0];
@@ -104,8 +107,9 @@ public class contacts {
                 }
             }
             if (!foundContact){
-                System.out.println("Your input did not match any contact.");
-
+                String name = "no match";
+                String number = "no match";
+                System.out.format(leftAlignFormat,"| " + name, number);
             }
 
 
