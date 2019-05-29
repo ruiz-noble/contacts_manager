@@ -312,11 +312,11 @@ public class contacts {
                 String name = line.split("\\|")[0];
                 if((name.trim().equalsIgnoreCase(contactToDelete)) || (name.trim().equalsIgnoreCase(contactToDelete +
                         " *"))){
+                    printWithDelays(deleted, TimeUnit.MILLISECONDS, 2);
                     continue;
                 }
                 updatedList.add(line);
             }
-            printWithDelays(deleted, TimeUnit.MILLISECONDS, 2);
             Files.write(file, updatedList);
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
