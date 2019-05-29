@@ -87,6 +87,7 @@ public class contacts {
     private static void search(){
         System.out.println("What contact would you like displayed?");
         String searchedName = sc.nextLine();
+        boolean foundContact = false;
         try {
             List<String> contacts = Files.readAllLines(file);
             for(String line : contacts){
@@ -94,13 +95,18 @@ public class contacts {
                 String number = line.split("\\|")[1];
                 if(name.trim().toLowerCase().contains(searchedName.toLowerCase())){
                     System.out.println(line);
+                    foundContact = true;
                 } else if (number.trim().toLowerCase().contains(searchedName.toLowerCase())){
                     System.out.println(line);
-                } else{
-                    System.out.println("No contact matches your input");
-                    runApp();
+                    foundContact = true;
                 }
             }
+            if (!foundContact){
+                System.out.println("Your input did not match any contact.");
+
+            }
+
+
         } catch (IOException e) {
             e.printStackTrace();
         }
