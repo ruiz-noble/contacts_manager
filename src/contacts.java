@@ -65,10 +65,12 @@ public class contacts {
               delete();
               runApp();
         } else if (userOption == 5) {
-            System.out.println("Goodbye!");
-        }else if(userOption == 6){
-            makeFavorite();
+            addFavorite();
             runApp();
+        } else if (userOption == 6){
+            System.out.println("Add favorite search method here");
+        }else if(userOption == 7){
+            System.out.println("Goodbye!");
         }  else{
             System.out.println("Error: Invalid input.");
             runApp();
@@ -193,7 +195,7 @@ public class contacts {
             e.printStackTrace();
         }
     }
-    private static void makeFavorite(){
+    private static void addFavorite(){
         System.out.println("Who who would you like to add to your favorites?");
         String contactFavorite = sc.nextLine();
         List<String> updatedList = new ArrayList<>();
@@ -211,6 +213,30 @@ public class contacts {
             }
             Files.write(file, updatedList);
 
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void showFavorites(){
+
+        try {
+            System.out.format(header);
+            List<String> contacts = Files.readAllLines(file);
+            for(String line : contacts){
+                String name = line.split("\\|")[0];
+                String number = line.split("\\|")[1];
+                if(name.trim().toLowerCase().contains("*")){
+                    System.out.format(leftAlignFormat,"| " + name, number);
+                } else if (number.trim().toLowerCase().contains(searchedName.toLowerCase())){
+                    System.out.format(leftAlignFormat,"| " + name, number);
+                }
+            }
+            if (!foundContact){
+                String name = "no match";
+                String number = "no match";
+                System.out.format(leftAlignFormat,"| " + name, number);
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
