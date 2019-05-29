@@ -94,7 +94,7 @@ public class contacts {
             List<String> contacts = Files.readAllLines(file);
             for(String line : contacts){
                 String name = line.split("\\|")[0];
-                if(name.trim().equalsIgnoreCase(searchedName)){
+                if(name.trim().toLowerCase().contains(searchedName.toLowerCase())){
                     System.out.println(line);
                 }
             }
