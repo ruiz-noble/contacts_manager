@@ -13,6 +13,8 @@ public class contacts {
     private static String fileName = "contacts.txt";
     private static Path file = Paths.get(directory, fileName);
     private static Scanner sc = new Scanner(System.in);
+    private static String leftAlignFormat = "%-14s | %-14s |%n";
+
 
     public static void main(String[] args) {
         System.out.println("\nWelcome to your contacts app \nHere are your options");
@@ -67,7 +69,6 @@ public class contacts {
     }
 
     private static void read(){
-        String leftAlignFormat = "%-14s | %-14s |%n";
         System.out.format("+--------------|----------------+%n");
         System.out.format("| Contact Name | Number         |%n");
         System.out.format("+--------------|----------------+%n");
@@ -94,10 +95,10 @@ public class contacts {
                 String name = line.split("\\|")[0];
                 String number = line.split("\\|")[1];
                 if(name.trim().toLowerCase().contains(searchedName.toLowerCase())){
-                    System.out.println(line);
+                    System.out.format(leftAlignFormat,"| " + name, number);
                     foundContact = true;
                 } else if (number.trim().toLowerCase().contains(searchedName.toLowerCase())){
-                    System.out.println(line);
+                    System.out.format(leftAlignFormat,"| " + name, number);
                     foundContact = true;
                 }
             }
