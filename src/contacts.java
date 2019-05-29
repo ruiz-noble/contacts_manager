@@ -89,6 +89,7 @@ public class contacts {
         System.out.println("What contact would you like displayed?");
         String searchedName = sc.nextLine();
         boolean foundContact = false;
+
         try {
             List<String> contacts = Files.readAllLines(file);
             for(String line : contacts){
