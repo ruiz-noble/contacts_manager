@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
+
 public class contacts {
 
     private static String directory = "data";
@@ -14,17 +16,86 @@ public class contacts {
     private static Path file = Paths.get(directory, fileName);
     private static Scanner sc = new Scanner(System.in);
     private static String leftAlignFormat = "%-14s | %-14s |%n";
+
+    private static String topPhone = "      .-------------------.  \n" +
+                                  "    .'       .'  `.        `.\n" +
+                                  "   ;         :    :          ;\n" +
+                                  "   | .---------------------. |\n" +
+                                  "   | |                     | |\n" +
+                                  "   | |                     | |\n" +
+                                  "   | |                     | |";
+    private static String bottomPhone = "   | |                     | |\n" +
+                                     "   | |                     | |\n" +
+                                     "   | |                     | |\n" +
+            "   | |                     | |\n" +
+            "   | |                     | |\n" +
+            "   | |                     | |\n" +
+            "   | |                     | |\n" +
+            "   | |                     | |\n" +
+            "   | |                     | |\n" +
+                                     "   | |                     | |\n" +
+                                     "   | `---------------------' |\n" +
+                                     "   |                         |\n" +
+                                     "    '.______________________.'\n";
     private static String header = "+--------------|----------------+%n" +
                                    "| Contact Name | Number         |%n" +
                                    "+--------------|----------------+%n";
 
 
-    public static void main(String[] args) {
-        System.out.println("\nWelcome to your contacts app \nHere are your options");
+    private static String welcome = "      .-------------------.  \n" +
+            "    .'       .'  `.        `.\n" +
+            "   ;         :    :          ;\n" +
+            "   | .---------------------. |\n" +
+            "   | |                     | |\n" +
+            "   | |                     | |\n" +
+            "   | |      Welcome!       | |\n" +
+            "   | |                     | |\n" +
+            "   | |        to           | |\n" +
+            "   | |                     | |\n" +
+            "   | |    your contacts    | |\n" +
+            "   | |                     | |\n" +
+            "   | |        app          | |\n" +
+            "   | |                     | |\n" +
+            "   | |                     | |\n" +
+            "   | |                     | |\n" +
+            "   | |                     | |\n" +
+            "   | `---------------------' |\n" +
+            "   |                         |\n" +
+            "    '.______________________.'\n";
+    private static String options = "      .-------------------.  \n" +
+            "    .'       .'  `.        `.\n" +
+            "   ;         :    :          ;\n" +
+            "   | .---------------------. |\n" +
+            "   | |                     | |\n" +
+            "   | | 1. View Contacts    | |\n" +
+            "   | | 2. Add New Contact  | |\n" +
+            "   | | 3. Search Contact   | |\n" +
+            "   | | 4. Delete Contact   | |\n" +
+            "   | | 5. Add Favorite     | |\n" +
+            "   | | 6. View Favorites   | |\n" +
+            "   | | 7. Exit             | |\n" +
+            "   | |                     | |\n" +
+            "   | | Enter an option     | |\n" +
+            "   | |                     | |\n" +
+            "   | |                     | |\n" +
+            "   | |                     | |\n" +
+            "   | `---------------------' |\n" +
+            "   |                         |\n" +
+            "    '.______________________.'\n";
+
+    public static void main(String[] args) throws Exception{
+        printWithDelays(welcome, TimeUnit.MILLISECONDS, 5);
+        
         runApp();
 
     }
-
+    private static void printWithDelays(String data, TimeUnit unit, long delay)
+            throws InterruptedException {
+        for (char ch:data.toCharArray()) {
+            System.out.print(ch);
+            unit.sleep(delay);
+        }
+    }
     private static String format(String number){
         if(number.length() == 7) {
             String first = number.substring(0, 3);
@@ -42,16 +113,9 @@ public class contacts {
         }
     }
 
-    private static void runApp() {
-        System.out.println("\n1. View contacts\n" +
-                "2. Add a new contact\n" +
-                "3. Search a contact by name or number\n" +
-                "4. Delete an existing contact\n" +
-                "5. Add a contact to favorites\n" +
-                "6. View Favorites\n" +
-                "7. Exit\n" +
-                "Enter an option (1, 2, 3, 4 or 5):\n");
-
+    private static void runApp() throws InterruptedException {
+        printWithDelays(options, TimeUnit.MILLISECONDS, 5);
+        System.out.println("Input here: ");
         int userOption = Integer.valueOf(sc.nextLine());
         if(userOption == 1){
              read();
@@ -126,7 +190,7 @@ public class contacts {
         }
     }
 
-    private static void add(){
+    private static void add() throws InterruptedException {
         System.out.println("Please enter the name that you would like add.");
         String newName = sc.nextLine();
         if(newName.length() > 13){
