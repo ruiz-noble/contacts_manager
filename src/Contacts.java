@@ -11,12 +11,10 @@ import java.util.concurrent.TimeUnit;
 
 public class Contacts {
 
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws Exception {
         printWithDelays(contact, TimeUnit.MILLISECONDS, 5);
         printWithDelays(manager, TimeUnit.MILLISECONDS, 5);
-
         printWithDelays(welcome, TimeUnit.MILLISECONDS, 2);
-
         runApp();
 
     }
@@ -27,30 +25,31 @@ public class Contacts {
     private static Scanner sc = new Scanner(System.in);
     private static String leftAlignFormat = "   | | %-14s | %-14s | | %n";
 
-    private static String topPhone = "      .-------------------------------.  \n" +
-                                  "    .'              .'  `.             `.\n" +
-                                  "   ;                :    :               ;\n" +
-                                  "   | .---------------------------------. |\n" +
-                                  "   | |                                 | |\n" +
-                                  "   | |                                 | |\n" +
-                                  "   | |                                 | |\n" +
-                                  "   | |                                 | |\n" +
-                                  "   | | Contact Name   |   Number       | |\n";
+    private static String topPhone =
+            "      .-------------------------------.  \n" +
+            "    .'              .'  `.             `.\n" +
+            "   ;                :    :               ;\n" +
+            "   | .---------------------------------. |\n" +
+            "   | |                                 | |\n" +
+            "   | |                                 | |\n" +
+            "   | |                                 | |\n" +
+            "   | |                                 | |\n" +
+            "   | | Contact Name   |   Number       | |\n";
     private static String bottomPhone = "   | |                                 | |\n" +
-                                     "   | |                                 | |\n" +
-                                     "   | |                                 | |\n" +
             "   | |                                 | |\n" +
             "   | |                                 | |\n" +
             "   | |                                 | |\n" +
+            "   | |                                 | |\n" +
+            "   | |                                 | |\n" +
 
-                                     "   | |                                 | |\n" +
-                                     "   | `---------------------------------' |\n" +
-                                     "   |                                     |\n" +
-                                     "    '.__________________________________.'\n";
+            "   | |                                 | |\n" +
+            "   | `---------------------------------' |\n" +
+            "   |                                     |\n" +
+            "    '.__________________________________.'\n";
 
 
-
-    private static String welcome = "      .-------------------------------.  \n" +
+    private static String welcome =
+            "      .-------------------------------.  \n" +
             "    .'              .'  `.             `.\n" +
             "   ;                :    :               ;\n" +
             "   | .---------------------------------. |\n" +
@@ -75,7 +74,8 @@ public class Contacts {
             "   | `---------------------------------' |\n" +
             "   |                                     |\n" +
             "    '.__________________________________.'\n";
-    private static String options = "      .-------------------------------.  \n" +
+    private static String options =
+            "      .-------------------------------.  \n" +
             "    .'              .'  `.             `.\n" +
             "   ;                :    :               ;\n" +
             "   | .---------------------------------. |\n" +
@@ -98,7 +98,8 @@ public class Contacts {
             "   | `---------------------------------' |\n" +
             "   |                                     |\n" +
             "    '.__________________________________.'\n";
-    private static String goodBye = "      .-------------------------------.  \n" +
+    private static String goodBye =
+            "      .-------------------------------.  \n" +
             "    .'              .'  `.             `.\n" +
             "   ;                :    :               ;\n" +
             "   | .---------------------------------. |\n" +
@@ -123,7 +124,8 @@ public class Contacts {
             "   | `---------------------------------' |\n" +
             "   |                                     |\n" +
             "    '.__________________________________.'\n";
-    private static  String deleted = "      .-------------------------------.  \n" +
+    private static String deleted =
+            "      .-------------------------------.  \n" +
             "    .'              .'  `.             `.\n" +
             "   ;                :    :               ;\n" +
             "   | .---------------------------------. |\n" +
@@ -149,45 +151,46 @@ public class Contacts {
             "   |                                     |\n" +
             "    '.__________________________________.'\n";
 
-    private static String contact = " ██████╗ ██████╗ ███╗   ██╗████████╗ █████╗  ██████╗████████╗    \n" +
-                                    "██╔════╝██╔═══██╗████╗  ██║╚══██╔══╝██╔══██╗██╔════╝╚══██╔══╝    \n" +
-                                    "██║     ██║   ██║██╔██╗ ██║   ██║   ███████║██║        ██║       \n" +
-                                    "██║     ██║   ██║██║╚██╗██║   ██║   ██╔══██║██║        ██║       \n" +
-                                    "╚██████╗╚██████╔╝██║ ╚████║   ██║   ██║  ██║╚██████╗   ██║       \n" +
-                                    " ╚═════╝ ╚═════╝ ╚═╝  ╚═══╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝   ╚═╝       \n" +
-                                    "                                                                 \n" ;
+    private static String contact =
+            " ██████╗ ██████╗ ███╗   ██╗████████╗ █████╗  ██████╗████████╗    \n" +
+            "██╔════╝██╔═══██╗████╗  ██║╚══██╔══╝██╔══██╗██╔════╝╚══██╔══╝    \n" +
+            "██║     ██║   ██║██╔██╗ ██║   ██║   ███████║██║        ██║       \n" +
+            "██║     ██║   ██║██║╚██╗██║   ██║   ██╔══██║██║        ██║       \n" +
+            "╚██████╗╚██████╔╝██║ ╚████║   ██║   ██║  ██║╚██████╗   ██║       \n" +
+            " ╚═════╝ ╚═════╝ ╚═╝  ╚═══╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝   ╚═╝       \n" +
+            "                                                                 \n";
 
     private static String manager =
-                                    "██╗   ███╗ █████╗ ███╗   ██╗ █████╗  ██████╗ ███████╗██████╗ \n" +
-                                    "████╗ ████║██╔══██╗████╗  ██║██╔══██╗██╔════╝ ██╔════╝██╔══██╗\n" +
-                                    "██╔████╔██║███████║██╔██╗ ██║███████║██║  ███╗█████╗  ██████╔╝\n" +
-                                    "██║╚██╔╝██║██╔══██║██║╚██╗██║██╔══██║██║   ██║██╔══╝  ██╔══██╗\n" +
-                                    "██║ ╚═╝ ██║██║  ██║██║ ╚████║██║  ██║╚██████╔╝███████╗██║  ██║\n" +
-                                    "╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚═╝  ╚═╝\n" +
-                                    "                                                              \n";
+                    "██╗   ███╗ █████╗ ███╗   ██╗ █████╗  ██████╗ ███████╗██████╗ \n" +
+                    "████╗ ████║██╔══██╗████╗  ██║██╔══██╗██╔════╝ ██╔════╝██╔══██╗\n" +
+                    "██╔████╔██║███████║██╔██╗ ██║███████║██║  ███╗█████╗  ██████╔╝\n" +
+                    "██║╚██╔╝██║██╔══██║██║╚██╗██║██╔══██║██║   ██║██╔══╝  ██╔══██╗\n" +
+                    "██║ ╚═╝ ██║██║  ██║██║ ╚████║██║  ██║╚██████╔╝███████╗██║  ██║\n" +
+                    "╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚═╝  ╚═╝\n" +
+                    "                                                              \n";
 
 
     private static void printWithDelays(String data, TimeUnit unit, long delay)
             throws InterruptedException {
-        for (char ch:data.toCharArray()) {
+        for (char ch : data.toCharArray()) {
             System.out.print(ch);
             unit.sleep(delay);
         }
     }
 
-    private static String format(String number){
-        if(number.length() == 7) {
+    private static String format(String number) {
+        if (number.length() == 7) {
             String first = number.substring(0, 3);
             String second = number.substring(3, 7);
             return first + "-" + second;
-        } else if (number.length() == 10){
+        } else if (number.length() == 10) {
             String first = number.substring(0, 3);
             String second = number.substring(3, 6);
             String third = number.substring(6, 10);
             return first + "-" + second + "-" + third;
-        }  else if (number.length() > 10){
+        } else if (number.length() > 10) {
             return number;
-        }  else {
+        } else {
             return "Invalid entry";
         }
     }
@@ -196,37 +199,37 @@ public class Contacts {
         printWithDelays(options, TimeUnit.MILLISECONDS, 2);
         System.out.println("Input here: ");
         int userOption = Integer.valueOf(sc.nextLine());
-        if(userOption == 1){
-             read();
-             runApp();
-        } else if (userOption == 2){
-             add();
-             runApp();
-        } else if (userOption == 3){
-              search();
-              runApp();
-        } else if (userOption == 4){
-              delete();
-              runApp();
+        if (userOption == 1) {
+            read();
+            runApp();
+        } else if (userOption == 2) {
+            add();
+            runApp();
+        } else if (userOption == 3) {
+            search();
+            runApp();
+        } else if (userOption == 4) {
+            delete();
+            runApp();
         } else if (userOption == 5) {
             addFavorite();
             runApp();
-        } else if (userOption == 6){
+        } else if (userOption == 6) {
             showFavorites();
             runApp();
-        }else if(userOption == 7){
+        } else if (userOption == 7) {
             printWithDelays(goodBye, TimeUnit.MILLISECONDS, 2);
-        }  else{
+        } else {
             System.out.println("Error: Invalid input.");
             runApp();
         }
     }
 
-    private static void read(){
+    private static void read() {
         try {
             List<String> contacts = Files.readAllLines(file);
             printWithDelays(topPhone, TimeUnit.MILLISECONDS, 2);
-            for(String line : contacts){
+            for (String line : contacts) {
                 String name = line.split("\\|")[0];
                 String number = line.split("\\|")[1];
                 System.out.format(leftAlignFormat, name, number);
@@ -238,7 +241,7 @@ public class Contacts {
     }
 
 
-    private static void search(){
+    private static void search() {
         System.out.println("What contact would you like displayed?");
         String searchedName = sc.nextLine();
         boolean foundContact = false;
@@ -246,23 +249,23 @@ public class Contacts {
         try {
             printWithDelays(topPhone, TimeUnit.MILLISECONDS, 2);
             List<String> contacts = Files.readAllLines(file);
-            for(String line : contacts){
+            for (String line : contacts) {
                 String name = line.split("\\|")[0];
                 String number = line.split("\\|")[1];
-                if(name.trim().toLowerCase().contains(searchedName.toLowerCase())){
+                if (name.trim().toLowerCase().contains(searchedName.toLowerCase())) {
                     System.out.format(leftAlignFormat, name, number);
                     foundContact = true;
-                } else if (number.trim().toLowerCase().contains(searchedName.toLowerCase())){
+                } else if (number.trim().toLowerCase().contains(searchedName.toLowerCase())) {
                     System.out.format(leftAlignFormat, name, number);
                     foundContact = true;
                 }
             }
             printWithDelays(bottomPhone, TimeUnit.MILLISECONDS, 2);
 
-            if (!foundContact){
+            if (!foundContact) {
                 String name = "no match";
                 String number = "no match";
-                System.out.format(leftAlignFormat,"| " + name, number);
+                System.out.format(leftAlignFormat, "| " + name, number);
             }
 
 
@@ -274,14 +277,14 @@ public class Contacts {
     private static void add() throws InterruptedException {
         System.out.println("Please enter the name that you would like add.");
         String newName = sc.nextLine();
-        if(newName.length() > 13){
+        if (newName.length() > 13) {
             System.out.println("Name too large consider abbreviation");
             runApp();
         }
         System.out.println("Please enter their phone number number");
         String newNumber = sc.nextLine();
         String formattedNumber = format(newNumber);
-        if(formattedNumber.length() > 14){
+        if (formattedNumber.length() > 14) {
             System.out.println("Invalid phone number");
             runApp();
         }
@@ -289,31 +292,31 @@ public class Contacts {
         List<String> updatedList = new ArrayList<>();
         try {
             List<String> contacts = Files.readAllLines(file);
-            for(String line : contacts){
+            for (String line : contacts) {
                 String name = line.split("\\|")[0];
                 String number = line.split("\\|")[1];
-                if(name.trim().equalsIgnoreCase(newName) || name.trim().equalsIgnoreCase(newName + " *")){
-                    System.out.printf("There's already a contact named %s. Do you want to overwrite it? (Yes/No)\n",newName);
-                    if (sc.nextLine().equals("yes")){
+                if (name.trim().equalsIgnoreCase(newName) || name.trim().equalsIgnoreCase(newName + " *")) {
+                    System.out.printf("There's already a contact named %s. Do you want to overwrite it? (Yes/No)\n", newName);
+                    if (sc.nextLine().equals("yes")) {
                         updatedList.add(newContact);
                         continue;
-                    } else{
+                    } else {
                         add();
                     }
-                } else if (number.trim().equalsIgnoreCase(formattedNumber.trim())){
+                } else if (number.trim().equalsIgnoreCase(formattedNumber.trim())) {
                     System.out.printf("There's already a contact with the number %s. Do you want to overwrite it? " +
-                            "(Yes/No)\n",formattedNumber);
-                    if (sc.nextLine().equals("yes")){
+                            "(Yes/No)\n", formattedNumber);
+                    if (sc.nextLine().equals("yes")) {
                         updatedList.add(newContact);
                         continue;
-                    } else{
+                    } else {
                         add();
                     }
                 }
                 updatedList.add(line);
             }
             Files.write(file, updatedList);
-            if (updatedList.contains(newContact)){
+            if (updatedList.contains(newContact)) {
                 Files.write(file, updatedList);
             } else {
                 Files.write(file, Arrays.asList(newContact), StandardOpenOption.APPEND);
@@ -324,16 +327,16 @@ public class Contacts {
 
     }
 
-    private static void delete(){
+    private static void delete() {
         System.out.println("What contact would you like to delete?");
         String contactToDelete = sc.nextLine();
         List<String> updatedList = new ArrayList<>();
         try {
             List<String> contacts = Files.readAllLines(file);
-            for(String line : contacts){
+            for (String line : contacts) {
                 String name = line.split("\\|")[0];
-                if((name.trim().equalsIgnoreCase(contactToDelete)) || (name.trim().equalsIgnoreCase(contactToDelete +
-                        " *"))){
+                if ((name.trim().equalsIgnoreCase(contactToDelete)) || (name.trim().equalsIgnoreCase(contactToDelete +
+                        " *"))) {
                     printWithDelays(deleted, TimeUnit.MILLISECONDS, 2);
                     continue;
                 }
@@ -344,17 +347,18 @@ public class Contacts {
             e.printStackTrace();
         }
     }
-    private static void addFavorite(){
+
+    private static void addFavorite() {
         System.out.println("Who who would you like to add to your favorites?");
         String contactFavorite = sc.nextLine();
         List<String> updatedList = new ArrayList<>();
 
         try {
             List<String> contacts = Files.readAllLines(file);
-            for (String line: contacts) {
+            for (String line : contacts) {
                 String name = line.split("\\|")[0];
                 String number = line.split("\\|")[1];
-                if(name.trim().equalsIgnoreCase(contactFavorite)){
+                if (name.trim().equalsIgnoreCase(contactFavorite)) {
                     updatedList.add(name + " *|" + number);
                     continue;
                 }
@@ -367,12 +371,12 @@ public class Contacts {
         }
     }
 
-    private static void showFavorites(){
+    private static void showFavorites() {
 
         try {
             printWithDelays(topPhone, TimeUnit.MILLISECONDS, 2);
             List<String> contacts = Files.readAllLines(file);
-            for(String line : contacts) {
+            for (String line : contacts) {
                 String name = line.split("\\|")[0];
                 String number = line.split("\\|")[1];
                 if (name.trim().toLowerCase().contains("*")) {
