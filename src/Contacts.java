@@ -10,7 +10,7 @@ import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
 public class Contacts {
-
+    //Runs the application
     public static void main(String[] args) throws Exception {
         printWithDelays(contact, TimeUnit.MILLISECONDS, 5);
         printWithDelays(manager, TimeUnit.MILLISECONDS, 5);
@@ -18,11 +18,14 @@ public class Contacts {
         runApp();
 
     }
-
+    //Path to contacts.txt file
     private static String directory = "data";
     private static String fileName = "contacts.txt";
     private static Path file = Paths.get(directory, fileName);
+
+    //Scanner
     private static Scanner sc = new Scanner(System.in);
+    //Formats each line when printed
     private static String leftAlignFormat = "   | | %-14s | %-14s | | %n";
 
     private static String topPhone =
@@ -169,7 +172,7 @@ public class Contacts {
                     "╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚═╝  ╚═╝\n" +
                     "                                                              \n";
 
-
+    //Method that draws out the application when it's ran
     private static void printWithDelays(String data, TimeUnit unit, long delay)
             throws InterruptedException {
         for (char ch : data.toCharArray()) {
@@ -178,6 +181,8 @@ public class Contacts {
         }
     }
 
+
+    //Method for formatting phone numbers
     private static String format(String number) {
         if (number.length() == 7) {
             String first = number.substring(0, 3);
@@ -195,6 +200,7 @@ public class Contacts {
         }
     }
 
+    //Method that takes the user's option and executes a method
     private static void runApp() throws InterruptedException {
         printWithDelays(options, TimeUnit.MILLISECONDS, 2);
         System.out.println("Input here: ");
@@ -224,7 +230,7 @@ public class Contacts {
             runApp();
         }
     }
-
+    //Method that prints out the contacts
     private static void read() {
         try {
             List<String> contacts = Files.readAllLines(file);
@@ -240,7 +246,7 @@ public class Contacts {
         }
     }
 
-
+    //Method that scans a user input and outputs contacts that contain the input
     private static void search() {
         System.out.println("What contact would you like displayed?");
         String searchedName = sc.nextLine();
@@ -274,6 +280,8 @@ public class Contacts {
         }
     }
 
+
+    //Method for adding new contacts
     private static void add() throws InterruptedException {
         System.out.println("Please enter the name that you would like add.");
         String newName = sc.nextLine();
@@ -326,7 +334,7 @@ public class Contacts {
         }
 
     }
-
+    //Method that deletes contacts, also allows the user to update existing contacts
     private static void delete() {
         System.out.println("What contact would you like to delete?");
         String contactToDelete = sc.nextLine();
@@ -348,6 +356,7 @@ public class Contacts {
         }
     }
 
+    // Method for adding a contacts to favorites list
     private static void addFavorite() {
         System.out.println("Who who would you like to add to your favorites?");
         String contactFavorite = sc.nextLine();
@@ -370,7 +379,7 @@ public class Contacts {
             e.printStackTrace();
         }
     }
-
+    //Method for displaying the contacts that are favorites
     private static void showFavorites() {
 
         try {
