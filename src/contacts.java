@@ -11,6 +11,16 @@ import java.util.concurrent.TimeUnit;
 
 public class contacts {
 
+    public static void main(String[] args) throws Exception{
+        printWithDelays(contact, TimeUnit.MILLISECONDS, 5);
+        printWithDelays(manager, TimeUnit.MILLISECONDS, 5);
+
+        printWithDelays(welcome, TimeUnit.MILLISECONDS, 2);
+
+        runApp();
+
+    }
+
     private static String directory = "data";
     private static String fileName = "contacts.txt";
     private static Path file = Paths.get(directory, fileName);
@@ -156,15 +166,7 @@ public class contacts {
             "╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚═╝  ╚═╝\n" +
             "                                                              \n";
 
-    public static void main(String[] args) throws Exception{
-        printWithDelays(contact, TimeUnit.MILLISECONDS, 5);
-        printWithDelays(manager, TimeUnit.MILLISECONDS, 5);
 
-        printWithDelays(welcome, TimeUnit.MILLISECONDS, 2);
-        
-        runApp();
-
-    }
     private static void printWithDelays(String data, TimeUnit unit, long delay)
             throws InterruptedException {
         for (char ch:data.toCharArray()) {
@@ -290,7 +292,7 @@ public class contacts {
             for(String line : contacts){
                 String name = line.split("\\|")[0];
                 String number = line.split("\\|")[1];
-                if(name.trim().equalsIgnoreCase(newName)){
+                if(name.trim().equalsIgnoreCase(newName) || name.trim().equalsIgnoreCase(newName + " *")){
                     System.out.printf("There's already a contact named %s. Do you want to overwrite it? (Yes/No)\n",newName);
                     if (sc.nextLine().equals("yes")){
                         updatedList.add(newContact);
