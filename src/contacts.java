@@ -50,9 +50,9 @@ public class contacts {
             "   | |                                 | |\n" +
             "   | |               to                | |\n" +
             "   | |                                 | |\n" +
-            "   | |           your contacts         | |\n" +
+            "   | |          Your Contact           | |\n" +
             "   | |                                 | |\n" +
-            "   | |              manager            | |\n" +
+            "   | |             Manager             | |\n" +
             "   | |                                 | |\n" +
             "   | |                                 | |\n" +
             "   | |                                 | |\n" +
