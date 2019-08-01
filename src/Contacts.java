@@ -272,6 +272,7 @@ public class Contacts {
                 String name = "no match";
                 String number = "no match";
                 System.out.format(leftAlignFormat, "| " + name, number);
+                return;
             }
 
 
@@ -287,14 +288,14 @@ public class Contacts {
         String newName = sc.nextLine();
         if (newName.length() > 13) {
             System.out.println("Name too large consider abbreviation");
-            runApp();
+            return;
         }
         System.out.println("Please enter their phone number number");
         String newNumber = sc.nextLine();
         String formattedNumber = format(newNumber);
         if (formattedNumber.length() > 14) {
             System.out.println("Invalid phone number");
-            runApp();
+            return;
         }
         String newContact = newName + "|" + formattedNumber;
         List<String> updatedList = new ArrayList<>();
